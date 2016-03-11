@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:eric-taylor125/Mystore.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+ set :deploy_to, '/home/projects/MyStore'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -33,7 +33,10 @@ set :repo_url, 'git@github.com:eric-taylor125/Mystore.git'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
+set :use_sudo, false
+default_run_options[:shell] = '/bin/bash --login'
+set :branch, 'master'
+default_environment["RAILS_ENV"] = 'staging'
 namespace :deploy do
 
   after :restart, :clear_cache do
